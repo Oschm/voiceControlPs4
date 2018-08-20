@@ -1,9 +1,9 @@
 /*
-** file: js/options.js
-** description: javascript code for "html/options.html" page
-*/
+ ** file: js/options.js
+ ** description: javascript code for "html/options.html" page
+ */
 
-function init_options () {
+function init_options() {
     console.log("function: init_options");
 
     //load currently stored options configuration
@@ -13,7 +13,7 @@ function init_options () {
     //favorite_movie
     if (favorite_movie) {
         var favorite_movie_dropdown = document.getElementById('favorite-movie-dropdown');
-        for (var i=0; i < favorite_movie_dropdown.children.length; i++) {
+        for (var i = 0; i < favorite_movie_dropdown.children.length; i++) {
             var option = favorite_movie_dropdown.children[i];
             if (option.value == favorite_movie) {
                 option.selected = 'true';
@@ -23,13 +23,28 @@ function init_options () {
     }
 }
 
-function save_options () {
+function save_options() {
+
     console.log("function: save_options");
 
     //favorite-movie-dropdown
     var favorite_movie = document.getElementById('favorite-movie-dropdown').children[document.getElementById('favorite-movie-dropdown').selectedIndex].value;
     localStorage['favorite_movie'] = favorite_movie;
     console.log("favorite_movie = " + favorite_movie);
+
+
+    navigator.webkitGetUserMedia({
+        audio: true,
+    }, function(stream) {
+        stream.stop();
+        var textText = document.getElementById('test');
+        textText.innerHTML = "worked";
+        // Now you know that you have audio permission. Do whatever you want...
+    }, function(error) {
+        var textText = document.getElementById('test');
+        textText.innerHTML = error;
+        // Aw. No permission (or no microphone available).
+    });
 }
 
 //bind events to dom elements

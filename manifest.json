@@ -12,7 +12,6 @@
         "38": "images/icon_38.png",
         "128": "images/icon_128.png"
     },
-
     //required
     "browser_action": {
         "default_title": "browser_action: default_title",
@@ -20,8 +19,12 @@
             "19": "images/icon_19.png",
             "38": "images/icon_38.png"
         },
-        "default_popup": "html/main.html"
+        "default_popup": "html/default.html"
     },
+
+    "permissions": [
+        "tabs"
+    ],
 
     //additional
     "options_page": "html/options.html",
